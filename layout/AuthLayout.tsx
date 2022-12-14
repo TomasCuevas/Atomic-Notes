@@ -1,5 +1,6 @@
 import Head from "next/head";
 
+//* interface *//
 interface Props {
   children: React.ReactNode;
   description: string;
