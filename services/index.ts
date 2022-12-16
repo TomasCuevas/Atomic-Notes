@@ -1,3 +1,2 @@
-export * from "./loginWithEmailPasswordService";
-export * from "./loginWithGoogleService";
-export * from "./registerWithEmailPasswordService";
+export * from "./authServices";
+export * from "./noteServices";
