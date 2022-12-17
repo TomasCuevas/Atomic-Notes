@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { TextField } from "@mui/material";
@@ -34,7 +35,7 @@ const schema = Yup.object().shape({
   password: Yup.string().min(8).max(32).required().label("Password"),
 });
 
-const LoginPage = () => {
+const LoginPage: NextPage = () => {
   const { authState, startLoginWithEmailPassword, startLoginWithGoogle } =
     useContext(AuthContext);
 
@@ -78,26 +79,22 @@ const LoginPage = () => {
             className="flex flex-col gap-4 rounded-md py-10"
           >
             <TextField
-              label="Email"
-              type="text"
-              placeholder="email@test.com"
-              fullWidth
-              {...register("email", {
-                required: "Este campo es requerido.",
-              })}
+              {...register("email")}
               error={!!errors.email}
+              fullWidth
               helperText={errors.email?.message}
+              label="Email"
+              placeholder="email@test.com"
+              type="text"
             />
             <TextField
-              label="Password"
-              type="password"
-              placeholder="********"
-              fullWidth
-              {...register("password", {
-                required: "Este campo es requerido.",
-              })}
+              {...register("password")}
               error={!!errors.password}
+              fullWidth
               helperText={errors.password?.message}
+              label="Password"
+              placeholder="********"
+              type="password"
             />
             <FormButtonPrimary label="Ingresar" type="submit" />
             <FormBottonProvider

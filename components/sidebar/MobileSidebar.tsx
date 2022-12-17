@@ -92,7 +92,10 @@ export const MobileSidebar = () => {
               <span className="text-lg font-medium text-white">Notas</span>
             </li>
             <li
-              onClick={startLogout}
+              onClick={() => {
+                toggleSidebar();
+                startLogout();
+              }}
               className="mt-auto flex items-center gap-4 px-4 py-2"
             >
               <div className="flex items-center justify-center rounded-full bg-white p-3">

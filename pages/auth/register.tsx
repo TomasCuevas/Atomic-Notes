@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { TextField } from "@mui/material";
@@ -28,7 +29,7 @@ const schema = Yup.object().shape({
   password: Yup.string().min(8).max(32).required().label("Password"),
 });
 
-const RegisterPage = () => {
+const RegisterPage: NextPage = () => {
   const { authState, startRegister } = useContext(AuthContext);
 
   const {
@@ -65,31 +66,31 @@ const RegisterPage = () => {
             className="flex flex-col gap-4 rounded-md py-10"
           >
             <TextField
-              label="Nombre completo"
-              type="text"
-              placeholder="Nombre completo"
-              fullWidth
               {...register("displayName")}
               error={!!errors.displayName}
+              fullWidth
               helperText={errors.displayName?.message}
+              label="Nombre completo"
+              placeholder="Nombre completo"
+              type="text"
             />
             <TextField
-              label="Email"
-              type="text"
-              placeholder="email@test.com"
-              fullWidth
               {...register("email")}
               error={!!errors.email}
+              fullWidth
               helperText={errors.email?.message}
+              label="Email"
+              placeholder="email@test.com"
+              type="text"
             />
             <TextField
-              label="Password"
-              type="password"
-              placeholder="********"
-              fullWidth
               {...register("password")}
               error={!!errors.password}
+              fullWidth
               helperText={errors.password?.message}
+              label="Password"
+              placeholder="********"
+              type="password"
             />
             <FormButtonPrimary label="Registrarse" type="submit" />
           </form>

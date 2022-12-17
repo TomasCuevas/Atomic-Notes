@@ -7,12 +7,12 @@ import { getAllNotesService } from "../services";
 import { AuthContext } from "./AuthContext";
 
 //* interfaces *//
-import { INotes } from "../interfaces/INote";
+import { INote } from "../interfaces/INote";
 
 //* CONTEXT *//
 //* CONTEXT *//
 interface NotesContextProps {
-  notes: INotes[];
+  notes: INote[];
   startLoadingNotes(): void;
 }
 
@@ -26,7 +26,7 @@ interface NotesProviderProps {
 
 export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
   const { authState, user } = useContext(AuthContext);
-  const [notes, setNotes] = useState<INotes[]>([]);
+  const [notes, setNotes] = useState<INote[]>([]);
 
   useEffect(() => {
     if (authState === "authenticated") {
