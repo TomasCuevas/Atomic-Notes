@@ -9,3 +9,11 @@
 .body__fix {
   overflow-y: hidden;
 }
+
+.swiper-pagination-bullet-active {
+  background-color: #fd9808 !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: #fd9808 !important;
+}
