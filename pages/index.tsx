@@ -7,7 +7,7 @@ import esLocale from "dayjs/locale/es";
 dayjs.locale(esLocale);
 
 //* components *//
-import { FullLoader } from "../components/ui";
+import { FullLoader, NewNoteBottom } from "../components/ui";
 import { Carousel } from "../components/note";
 
 //* layout *//
@@ -35,6 +35,9 @@ const MainPage: NextPage = () => {
         <section className="p-4">
           <h2 className="my-2 text-lg text-orange">Notas recientes</h2>
           <Carousel />
+        </section>
+        <section className="p-4">
+          <NewNoteBottom />
         </section>
       </MainLayout>
     );
