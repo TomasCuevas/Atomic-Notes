@@ -23,9 +23,9 @@ export const Note: React.FC<Props> = ({ note }) => {
           <h2 className="w-[70%] overflow-hidden text-ellipsis whitespace-nowrap text-lg font-light text-white">
             {note.title}
           </h2>
-          <span className="text-white/50">
+          <time className="text-white/50">
             {dayjs(note.date).format("D MMM. YY")}
-          </span>
+          </time>
         </div>
         <div className="max-h-32 overflow-hidden">
           <p className="text-white/50">{note.body}</p>
