@@ -139,9 +139,9 @@ const NotePage: NextPage<Props> = ({ id }) => {
     const status = await updateNoteService(user!.uid, note);
     if (status) {
       startLoadingNotes();
-      Swal.fire("Nota actualizada con exito.", undefined, "success");
+      Swal.fire("Nota guardada con exito.", undefined, "success");
     } else {
-      Swal.fire("Error al actualizar la nota.", undefined, "error");
+      Swal.fire("Error al guardar la nota.", undefined, "error");
     }
   };
 
@@ -158,13 +158,13 @@ const NotePage: NextPage<Props> = ({ id }) => {
         title="Nota | Atomic Notes"
         description={`Pagina de nota ${getValues("id")}`}
       >
-        <div className="flex flex-col gap-4 p-4">
-          <section className="rounded-bl-lg border-b border-l border-white px-2 py-1">
+        <div className="flex w-full flex-col gap-4 p-4 md:p-8">
+          <section className="rounded-bl-lg border-b border-l border-orange/60 px-2 py-1">
             <p className="text-end font-bold text-white">
               {dayjs(watch("date")).format("D MMM YYYY - hh:mm A")}
             </p>
           </section>
-          <section className="rounded-bl-lg border-b border-l border-white  px-2 py-4">
+          <section className="rounded-bl-lg border-b border-l border-orange/60  px-2 py-4">
             <form className="flex w-full flex-col gap-5">
               <TextField
                 error={!!errors.title}
@@ -204,7 +204,10 @@ const NotePage: NextPage<Props> = ({ id }) => {
 
         <footer className="sticky bottom-0 left-0 mt-auto w-full bg-black/40 px-4 py-4 backdrop-blur-md">
           <div className="flex h-full w-full justify-around gap-4">
-            <section className="flex flex-col items-center gap-1">
+            <section
+              onClick={() => (fileInputRef.current! as { click: any }).click()}
+              className="flex cursor-pointer flex-col items-center gap-1"
+            >
               <input
                 ref={fileInputRef}
                 type="file"
@@ -213,24 +216,22 @@ const NotePage: NextPage<Props> = ({ id }) => {
                 onChange={onFileInputChange}
                 className="hidden"
               />
-              <BsImage
-                onClick={() =>
-                  (fileInputRef.current! as { click: any }).click()
-                }
-                className="text-2xl text-orange"
-              />
+              <BsImage className="text-2xl text-orange" />
+              <span className="text-white">Imagen</span>
             </section>
-            <section className="flex flex-col items-center gap-1">
-              <BsTrash
-                onClick={onDeleteNote}
-                className="text-2xl text-orange"
-              />
+            <section
+              onClick={onDeleteNote}
+              className="flex cursor-pointer flex-col items-center gap-1"
+            >
+              <BsTrash className=" text-2xl text-orange" />
+              <span className="text-white">Borrar</span>
             </section>
-            <section className="flex flex-col items-center gap-1">
-              <BsSave
-                onClick={handleSubmit(onUpdateNote)}
-                className="text-2xl text-orange"
-              />
+            <section
+              onClick={handleSubmit(onUpdateNote)}
+              className="flex cursor-pointer flex-col items-center gap-1"
+            >
+              <BsSave className="text-2xl text-orange" />
+              <span className="text-white">Guardar</span>
             </section>
           </div>
         </footer>

@@ -24,7 +24,7 @@ const NotesPage = () => {
         title="Todas las notas | Atomic Notes"
         description="Pagina para visualizar todas las paginas del usuario"
       >
-        <section>
+        <section className="w-full">
           {notes.map((note) => (
             <Note key={note.id} note={note} />
           ))}
