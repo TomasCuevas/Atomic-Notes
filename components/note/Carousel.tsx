@@ -17,29 +17,23 @@ export const Carousel = () => {
 
   return (
     <Swiper
-      className="max-w-[362px] xs:max-w-[540px] md:max-w-[735px] lg:max-w-[900px]"
+      className="max-w-[362px] xs:max-w-[540px] md:max-w-[735px] xl:max-w-[900px]"
       modules={[Pagination]}
-      spaceBetween={10}
       pagination={{ clickable: true }}
       breakpoints={{
         0: {
-          spaceBetween: 10,
           slidesPerView: 1,
         },
         363: {
-          spaceBetween: 10,
           slidesPerView: 2,
         },
         560: {
-          spaceBetween: 10,
           slidesPerView: 3,
         },
         768: {
-          spaceBetween: 10,
           slidesPerView: 4,
         },
-        1024: {
-          spaceBetween: 10,
+        1280: {
           slidesPerView: 5,
         },
       }}

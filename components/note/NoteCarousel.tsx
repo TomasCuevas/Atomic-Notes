@@ -17,13 +17,13 @@ export const NoteCarousel: React.FC<Props> = ({ note }) => {
   return (
     <article
       onClick={() => router.push(`/notes/${note.id}`)}
-      className="mb-10 ml-auto mr-auto flex h-[260px] w-[170px] flex-col rounded-md bg-gray-700 p-4 drop-shadow-xl"
+      className="group mb-10 ml-auto mr-auto flex h-[260px] w-[170px] cursor-pointer flex-col rounded-md bg-gray-700 p-4 transition-all duration-300 hover:bg-gray-900 hover:shadow-md hover:shadow-orange"
     >
       <h3 className="mb-2 font-medium text-white">{note.title}</h3>
-      <p className="max-h-[150px] overflow-hidden text-ellipsis text-gray-400">
+      <p className="max-h-[150px] overflow-hidden text-ellipsis text-gray-400 group-hover:text-gray-200">
         {note.body}
       </p>
-      <time className="mt-auto ml-auto text-gray-300">
+      <time className="mt-auto ml-auto text-gray-300 group-hover:text-gray-200">
         {dayjs(note.date).format("D MMM")}
       </time>
     </article>

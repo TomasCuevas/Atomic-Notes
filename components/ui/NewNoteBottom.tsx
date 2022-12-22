@@ -9,11 +9,13 @@ export const NewNoteBottom = () => {
   return (
     <button
       type="button"
-      className="flex w-full items-center justify-center gap-2 rounded-xl bg-orange p-4"
+      className="group flex w-full items-center justify-center gap-2 rounded-xl bg-orange p-3 transition-all duration-300 hover:bg-white"
       onClick={() => router.push("/notes/new")}
     >
-      <BsBookmarkPlus className="text-2xl text-white" />
-      <span className="text-lg font-bold text-white">Nueva nota</span>
+      <BsBookmarkPlus className="text-2xl text-white group-hover:text-orange" />
+      <span className="text-lg font-bold text-white group-hover:text-orange">
+        Nueva nota
+      </span>
     </button>
   );
 };

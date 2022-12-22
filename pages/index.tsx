@@ -27,16 +27,16 @@ const MainPage: NextPage = () => {
         title="Inicio | Atomic Notes"
         description="Pagina de inicio de Atomic Notes"
       >
-        <section className="flex p-4">
+        <section className="flex w-full max-w-[1010px] p-4">
           <time className="ml-auto font-bold uppercase text-white">
             {dayjs(new Date()).format("DD MMMM YYYY")}
           </time>
         </section>
-        <section className="p-4">
+        <section className="w-full max-w-[1010px] p-4">
           <h2 className="my-2 text-lg text-orange">Notas recientes</h2>
           <Carousel />
         </section>
-        <section className="p-4">
+        <section className="w-full max-w-[1010px] p-4">
           <NewNoteBottom />
         </section>
       </MainLayout>
