@@ -2,11 +2,11 @@ import { useContext } from "react";
 import Head from "next/head";
 
 //* components *//
-import { MobileHeader } from "../components/header";
+import { Header } from "../components/header";
 
 //* context *//
 import { UIContext } from "../context";
-import { MobileSidebar } from "../components/sidebar";
+import { DesktopSidebar, MobileSidebar } from "../components/sidebar";
 
 //* interface *//
 interface Props {
@@ -30,10 +30,13 @@ export const MainLayout: React.FC<Props> = ({
       </Head>
 
       {isSidebarOpen ? <MobileSidebar /> : null}
-      <MobileHeader />
-      <main className="flex min-h-[calc(100vh_-_56px)] flex-col bg-black">
-        {children}
-      </main>
+      <Header />
+      <div className="bg-black">
+        <DesktopSidebar />
+        <main className="flex min-h-[calc(100vh_-_56px)] flex-col items-center bg-black md:min-h-[calc(100vh_-_70px)] lg:left-[275px] lg:top-[70px] lg:ml-[275px]">
+          {children}
+        </main>
+      </div>
     </>
   );
 };
