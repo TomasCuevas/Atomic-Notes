@@ -69,10 +69,12 @@ const LoginPage: NextPage = () => {
         title="Registro | Atomic Notes"
         description="Pagina para registrarse en Atomic Notes"
       >
-        <article className="h-full w-full rounded-lg bg-white/80 px-4 py-12 shadow-md shadow-orange">
-          <h1 className="text-center text-4xl font-bold text-orange">
+        <article className="h-full w-full max-w-[420px] rounded-lg bg-white/80 px-4 py-12 shadow-md shadow-orange md:py-24 lg:ml-[40%]">
+          <h1 className="text-center text-4xl font-bold text-orange md:text-5xl">
             Ingresa en <br />{" "}
-            <span className="text-5xl text-black">Atomic Notes</span>
+            <span className="text-5xl text-black md:text-6xl">
+              Atomic Notes
+            </span>
           </h1>
           <form
             onSubmit={handleSubmit(onLoginWithEmailPassword)}
