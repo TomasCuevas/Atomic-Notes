@@ -37,6 +37,7 @@ export const MobileSidebar = () => {
             src={user?.photoURL}
             alt={`${user?.displayName} picture`}
             className="h-16 w-16 rounded-full sm:h-20 sm:w-20"
+            referrerPolicy="no-referrer"
           />
           <h2 className="mt-2 text-white sm:text-xl">{user?.displayName}</h2>
           <h3 className="text-sm text-gray-200 sm:text-base">{user?.email}</h3>
