@@ -12,7 +12,10 @@ import {
 } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
 
-//* icons *//
+//* components *//
+import { SidebarItem } from "./";
+
+//* context *//
 import { AuthContext } from "../../context";
 
 export const DesktopSidebar = () => {
@@ -34,47 +37,27 @@ export const DesktopSidebar = () => {
       </section>
       <section className="h-[calc(100vh_-_262px)] py-4 px-1">
         <ul className="flex h-full flex-col">
-          <li
-            onClick={() => router.push("/")}
-            className="group flex cursor-pointer items-center gap-4 rounded-full px-4 py-2 transition-all duration-300 hover:bg-orange"
-          >
-            <div className="flex items-center justify-center rounded-full bg-orange p-3 group-hover:bg-white">
-              {router.pathname === "/" ? (
-                <BsHouseDoorFill className="h-5 w-5 text-white group-hover:text-orange" />
-              ) : (
-                <BsHouseDoor className="h-5 w-5 text-white group-hover:text-orange" />
-              )}
-            </div>
-            <span className="text-lg font-medium text-white">Inicio</span>
-          </li>
-          <li
-            onClick={() => router.push("/notes/new")}
-            className="group flex cursor-pointer items-center gap-4 rounded-full px-4 py-2 transition-all duration-300 hover:bg-orange"
-          >
-            <div className="flex items-center justify-center rounded-full bg-orange p-3 group-hover:bg-white">
-              {router.pathname === "/notes/new" ? (
-                <BsBookmarkPlusFill className="h-5 w-5 text-white group-hover:text-orange" />
-              ) : (
-                <BsBookmarkPlus className="h-5 w-5 text-white group-hover:text-orange" />
-              )}
-            </div>
-            <span className="text-lg font-medium text-white">Nueva Nota</span>
-          </li>
-          <li
-            onClick={() => {
-              router.push("/notes/all");
-            }}
-            className="group flex cursor-pointer items-center gap-4 rounded-full px-4 py-2 transition-all duration-300 hover:bg-orange"
-          >
-            <div className="flex items-center justify-center rounded-full bg-orange p-3 group-hover:bg-white">
-              {router.pathname === "/notes/all" ? (
-                <BsBookmarksFill className="h-5 w-5 text-white group-hover:text-orange" />
-              ) : (
-                <BsBookmarks className="h-5 w-5 text-white group-hover:text-orange" />
-              )}
-            </div>
-            <span className="text-lg font-medium text-white">Notas</span>
-          </li>
+          <SidebarItem
+            icon={BsHouseDoor}
+            iconFill={BsHouseDoorFill}
+            path="/"
+            text="Inicio"
+            whenClick={() => router.push("/")}
+          />
+          <SidebarItem
+            icon={BsBookmarkPlus}
+            iconFill={BsBookmarkPlusFill}
+            path="/notes/new"
+            text="Nueva Nota"
+            whenClick={() => router.push("/notes/new")}
+          />
+          <SidebarItem
+            icon={BsBookmarks}
+            iconFill={BsBookmarksFill}
+            path="/notes/all"
+            text="Notas"
+            whenClick={() => router.push("/notes/all")}
+          />
           <li
             onClick={() => {
               startLogout();

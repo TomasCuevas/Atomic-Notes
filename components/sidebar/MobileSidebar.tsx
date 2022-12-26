@@ -12,7 +12,10 @@ import {
 } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
 
-//* icons *//
+//* components *//
+import { SidebarItem } from "./";
+
+//* contexts *//
 import { AuthContext, UIContext } from "../../context";
 
 export const MobileSidebar = () => {
@@ -44,56 +47,36 @@ export const MobileSidebar = () => {
         </section>
         <section className="h-[calc(100vh_-_160px)] py-4 px-2 sm:h-[calc(100vh_-_192px)]">
           <ul className="flex h-full flex-col">
-            <li
-              onClick={() => {
+            <SidebarItem
+              icon={BsHouseDoor}
+              iconFill={BsHouseDoorFill}
+              path="/"
+              text="Inicio"
+              whenClick={() => {
                 router.push("/");
                 toggleSidebar();
               }}
-              className="group flex cursor-pointer items-center gap-4 rounded-full px-4 py-2 transition-all duration-300 hover:bg-orange"
-            >
-              <div className="flex items-center justify-center rounded-full bg-orange p-3 group-hover:bg-white">
-                {router.pathname === "/" ? (
-                  <BsHouseDoorFill className="h-5 w-5 text-white group-hover:text-orange" />
-                ) : (
-                  <BsHouseDoor className="h-5 w-5 text-white group-hover:text-orange" />
-                )}
-              </div>
-              <span className="text-lg font-medium text-white ">Inicio</span>
-            </li>
-            <li
-              onClick={() => {
+            />
+            <SidebarItem
+              icon={BsBookmarkPlus}
+              iconFill={BsBookmarkPlusFill}
+              path="/notes/new"
+              text="Nueva nota"
+              whenClick={() => {
                 router.push("/notes/new");
                 toggleSidebar();
               }}
-              className="group flex cursor-pointer items-center gap-4 rounded-full px-4 py-2 transition-all duration-300 hover:bg-orange"
-            >
-              <div className="flex items-center justify-center rounded-full bg-orange p-3 group-hover:bg-white">
-                {router.pathname === "/notes/new" ? (
-                  <BsBookmarkPlusFill className="h-5 w-5 text-white group-hover:text-orange" />
-                ) : (
-                  <BsBookmarkPlus className="h-5 w-5 text-white group-hover:text-orange" />
-                )}
-              </div>
-              <span className="text-lg font-medium text-white ">
-                Nueva Nota
-              </span>
-            </li>
-            <li
-              onClick={() => {
+            />
+            <SidebarItem
+              icon={BsBookmarks}
+              iconFill={BsBookmarksFill}
+              path="/notes/all"
+              text="Notas"
+              whenClick={() => {
                 router.push("/notes/all");
                 toggleSidebar();
               }}
-              className="group flex cursor-pointer items-center gap-4 rounded-full px-4 py-2 transition-all duration-300 hover:bg-orange"
-            >
-              <div className="flex items-center justify-center rounded-full bg-orange p-3 group-hover:bg-white">
-                {router.pathname === "/notes/all" ? (
-                  <BsBookmarksFill className="h-5 w-5 text-white group-hover:text-orange" />
-                ) : (
-                  <BsBookmarks className="h-5 w-5 text-white group-hover:text-orange" />
-                )}
-              </div>
-              <span className="text-lg font-medium text-white ">Notas</span>
-            </li>
+            />
             <li
               onClick={() => {
                 toggleSidebar();
