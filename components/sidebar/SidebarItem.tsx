@@ -31,17 +31,17 @@ export const SidebarItem: React.FC<Props> = ({
       <div
         className={
           router.pathname === path
-            ? "flex items-center justify-center rounded-full bg-white p-3"
-            : "flex items-center justify-center rounded-full bg-orange p-3 group-hover:bg-white"
+            ? "flex items-center justify-center rounded-full bg-white p-2"
+            : "flex items-center justify-center rounded-full bg-orange p-2 group-hover:bg-white"
         }
       >
         {router.pathname === path ? (
-          <IconFill className="h-5 w-5 text-orange" />
+          <IconFill className="h-4 w-4 text-orange" />
         ) : (
-          <Icon className="h-5 w-5 text-white group-hover:text-orange" />
+          <Icon className="h-4 w-4 text-white group-hover:text-orange" />
         )}
       </div>
-      <span className="text-lg font-medium text-white">{text}</span>
+      <span className="text-base font-medium text-white">{text}</span>
     </li>
   );
 };
