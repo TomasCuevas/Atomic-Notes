@@ -13,7 +13,12 @@ import {
 import { MdLogout } from "react-icons/md";
 
 //* components *//
-import { SidebarItem } from "./";
+import {
+  SidebarItem,
+  SidebarItemGreen,
+  SidebarLogout,
+  SidebarProfile,
+} from "./";
 
 //* contexts *//
 import { AuthContext, UIContext } from "../../context";
@@ -33,20 +38,22 @@ export const MobileSidebar = () => {
         onClick={(event) => {
           event.stopPropagation();
         }}
-        className="h-screen w-3/4 max-w-[400px]  bg-black"
+        className="flex h-screen w-3/4  max-w-[230px] flex-col bg-black"
       >
-        <section className="flex h-40 flex-col justify-end bg-[url('/assets/sidebar.svg')] bg-cover bg-no-repeat p-4 sm:h-48">
-          <img
-            src={user?.photoURL}
-            alt={`${user?.displayName} picture`}
-            className="h-16 w-16 rounded-full sm:h-20 sm:w-20"
-            referrerPolicy="no-referrer"
+        <SidebarProfile
+          displayName={user!.displayName!}
+          email={user!.email}
+          photoURL={user!.photoURL!}
+        />
+        <section className="border-b border-orange/60 py-2 px-1">
+          <SidebarItemGreen
+            icon={BsBookmarkPlus}
+            text="Nueva nota"
+            whenClick={() => router.push("/notes/new")}
           />
-          <h2 className="mt-2 text-white sm:text-xl">{user?.displayName}</h2>
-          <h3 className="text-sm text-gray-200 sm:text-base">{user?.email}</h3>
         </section>
-        <section className="h-[calc(100vh_-_160px)] py-4 px-2 sm:h-[calc(100vh_-_192px)]">
-          <ul className="flex h-full flex-col">
+        <section className="flex flex-grow py-4 px-1">
+          <ul className="flex h-full flex-grow flex-col gap-1">
             <SidebarItem
               icon={BsHouseDoor}
               iconFill={BsHouseDoorFill}
@@ -54,16 +61,6 @@ export const MobileSidebar = () => {
               text="Inicio"
               whenClick={() => {
                 router.push("/");
-                toggleSidebar();
-              }}
-            />
-            <SidebarItem
-              icon={BsBookmarkPlus}
-              iconFill={BsBookmarkPlusFill}
-              path="/notes/new"
-              text="Nueva nota"
-              whenClick={() => {
-                router.push("/notes/new");
                 toggleSidebar();
               }}
             />
@@ -77,20 +74,7 @@ export const MobileSidebar = () => {
                 toggleSidebar();
               }}
             />
-            <li
-              onClick={() => {
-                toggleSidebar();
-                startLogout();
-              }}
-              className="group mt-auto flex cursor-pointer items-center gap-4 rounded-full px-4 py-2 transition-all duration-300 hover:bg-white"
-            >
-              <div className="flex items-center justify-center rounded-full bg-white p-3 group-hover:bg-orange">
-                <MdLogout className="h-5 w-5 text-orange group-hover:text-white" />
-              </div>
-              <span className="text-lg font-medium text-white group-hover:text-orange ">
-                Cerrar sesion
-              </span>
-            </li>
+            <SidebarLogout />
           </ul>
         </section>
       </div>
