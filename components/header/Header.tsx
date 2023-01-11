@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
   const { toggleSidebar } = useContext(UIContext);
 
   return (
-    <header className="sticky top-0 left-0 z-40 flex h-14 items-center  bg-orange p-4 sm:h-16 md:h-[70px]">
+    <header className="sticky top-0 left-0 z-40 flex h-14 items-center  bg-orange p-4 sm:h-16 lg:hidden">
       <NextLink href="/" className="flex items-center gap-4">
         <img
           src="/icon.svg"
