@@ -10,6 +10,8 @@ module.exports = {
         yellow: "#ffdd09",
         orange: "#fd9808",
         black: "#222233",
+        green: "#008f26",
+        greenLight: "#00a82d",
       },
       screens: {
         xs: "560px",
