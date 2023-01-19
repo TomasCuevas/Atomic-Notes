@@ -32,7 +32,7 @@ export const MainLayout: React.FC<Props> = ({
       {isSidebarOpen ? <MobileSidebar /> : null}
       <DesktopSidebar />
       <Header />
-      <main className="flex min-h-screen flex-col items-center overflow-hidden bg-black px-4 xs:px-8 lg:left-[230px] lg:top-[70px] lg:ml-[230px]">
+      <main className="flex h-[calc(100vh_-_56px)] flex-col items-center overflow-hidden bg-white sm:h-[calc(100vh_-_64px)] lg:left-[230px] lg:top-[70px] lg:ml-[230px] lg:max-h-screen lg:min-h-screen">
         {children}
       </main>
     </>
