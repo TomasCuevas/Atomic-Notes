@@ -19,14 +19,15 @@ import { INote } from "../interfaces/INote";
 
 //* create new note *//
 export const createNewNoteService = async (
-  uid: string
+  uid: string,
+  title: string,
+  body: string
 ): Promise<INote | false> => {
   try {
     const newNote: INote = {
-      title: "",
-      body: "",
+      title,
+      body,
       date: new Date().getTime(),
-      imageUrls: [],
     };
 
     const newDoc = await addDoc(
@@ -49,11 +50,11 @@ export const createNewNoteService = async (
 
 //* get a note *//
 export const getNoteService = async (
-  uid: string,
+  userId: string,
   noteId: string
 ): Promise<INote | false> => {
   try {
-    const noteRef = doc(FirebaseDB, `${uid}/allnotes/notes/${noteId}`);
+    const noteRef = doc(FirebaseDB, `${userId}/allnotes/notes/${noteId}`);
     const note = await getDoc(noteRef);
 
     const noteReturn = { ...note.data(), id: note.id } as INote;
@@ -88,11 +89,11 @@ export const getAllNotesService = async (
 
 //* update note *//
 export const updateNoteService = async (
-  uid: string,
+  userId: string,
   note: INote
 ): Promise<boolean> => {
   try {
-    const noteRef = doc(FirebaseDB, `${uid}/allnotes/notes/${note.id}`);
+    const noteRef = doc(FirebaseDB, `${userId}/allnotes/notes/${note.id}`);
     await updateDoc(noteRef, { ...note });
 
     return true;
@@ -102,60 +103,13 @@ export const updateNoteService = async (
   }
 };
 
-//* upload note image *//
-export const uploadNoteImageService = async (
-  files: FileList
-): Promise<string[] | false> => {
-  try {
-    const fileUploadPromises = [];
-    for (const file of files) {
-      fileUploadPromises.push(uploadImageService(file));
-    }
-
-    const imagesUrl = await Promise.all(fileUploadPromises);
-    const urls = imagesUrl.filter((url) => typeof url === "string") as string[];
-
-    return urls;
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
-};
-
-//* upload image *//
-export const uploadImageService = async (
-  file: File
-): Promise<String | false> => {
-  if (!file) return false;
-
-  const cloudUrl = "https://api.cloudinary.com/v1_1/dn3kl3egc/upload";
-  const formData = new FormData();
-  formData.append("upload_preset", "atomic-notes");
-  formData.append("file", file);
-
-  try {
-    const response = await fetch(cloudUrl, {
-      method: "POST",
-      body: formData,
-    });
-
-    if (!response.ok) return false;
-
-    const cloudResponse = await response.json();
-    return (cloudResponse as { secure_url: string }).secure_url;
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
-};
-
 //* delete note *//
 export const deleteNoteService = async (
-  uid: string,
+  userId: string,
   noteId: string
 ): Promise<boolean> => {
   try {
-    const docRef = doc(FirebaseDB, `${uid}/allnotes/notes/${noteId}`);
+    const docRef = doc(FirebaseDB, `${userId}/allnotes/notes/${noteId}`);
     await deleteDoc(docRef);
 
     return true;
