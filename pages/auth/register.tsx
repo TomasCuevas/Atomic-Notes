@@ -10,11 +10,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 Yup.setLocale(es);
 
 //* components *//
+import { AuthHoc, AuthTitle } from "../../components/auth";
 import { FullLoader } from "../../components/ui";
 import { FooterQuestion, FormButtonPrimary } from "../../components/form";
 
 //* layout *//
-import { AuthLayout } from "../../layout";
+import { AuthLayout } from "../../components/layout";
 
 //* context *//
 import { AuthContext } from "../../context";
@@ -55,13 +56,8 @@ const RegisterPage: NextPage = () => {
         title="Registro | Atomic Notes"
         description="Pagina para registrarse en Atomic Notes"
       >
-        <article className="h-full w-full max-w-[420px] rounded-lg bg-white/80 px-4 py-12 shadow-md shadow-orange md:py-24 lg:ml-[40%]">
-          <h1 className="text-center text-4xl font-bold text-orange md:text-5xl">
-            Registrarse en <br />{" "}
-            <span className="text-5xl text-black md:text-6xl">
-              Atomic Notes
-            </span>
-          </h1>
+        <AuthHoc>
+          <AuthTitle topic="Registrarse en" />
           <form
             autoComplete="off"
             onSubmit={handleSubmit(onRegister)}
@@ -101,7 +97,7 @@ const RegisterPage: NextPage = () => {
             linkPlaceholder="Inicia sesion"
             question="Ya tienes una cuenta"
           />
-        </article>
+        </AuthHoc>
       </AuthLayout>
     );
   }
