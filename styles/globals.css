@@ -18,3 +18,25 @@
 .swiper-pagination-bullet {
   background-color: #fd9808 !important;
 }
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #fd9808 #fff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #fd9808;
+  border-radius: 50px;
+  border: 0px solid #fff;
+}
