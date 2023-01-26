@@ -1,0 +1,49 @@
+.note p {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.note p img {
+  margin-bottom: 20px;
+}
+
+.note blockquote {
+  background-color: #fff1;
+  color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.note ul ul {
+  margin-left: 10px;
+}
+
+.note ul li {
+  position: relative;
+  margin-left: 10px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.note ul li:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  background-color: #fd9808;
+  left: -10px;
+  top: 8px;
+}
+
+.note ul ul li:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  background-color: #0000;
+  border: 1px solid #fd9808;
+}

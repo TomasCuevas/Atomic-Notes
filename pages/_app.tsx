@@ -5,6 +5,8 @@ import { AuthProvider, NotesProvider, UIProvider } from "../context";
 
 //* styles *//
 import "../styles/globals.css";
+import "../styles/note.css";
+import "../styles/editor.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
