@@ -13,8 +13,8 @@ module.exports = {
         greenLight: "#00a82d",
         background: "#15202b",
         backgroundHover: "#1c2732",
-        backgroundContrast: "#1e2732",
-        backgroundContrastHover: "#252e38",
+        backgroundContrast: "#273340",
+        backgroundContrastHover: "#374340",
       },
       screens: {
         xxs: "363px",
