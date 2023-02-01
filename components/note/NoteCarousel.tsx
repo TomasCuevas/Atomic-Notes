@@ -1,10 +1,6 @@
 import { useRouter } from "next/router";
-import dayjs from "dayjs";
-import esLocale from "dayjs/locale/es";
 
-dayjs.locale(esLocale);
-
-//* interface *//
+//* interfaces *//
 import { INote } from "../../interfaces/INote";
 
 interface Props {
@@ -17,14 +13,20 @@ export const NoteCarousel: React.FC<Props> = ({ note }) => {
   return (
     <article
       onClick={() => router.push(`/notes/${note.id}`)}
-      className="group mb-10 ml-auto mr-auto flex h-[260px] w-[170px] cursor-pointer flex-col rounded-md bg-gray-700 p-4 transition-all duration-300 hover:bg-gray-900 hover:shadow-md hover:shadow-orange"
+      className="group mb-10 ml-auto mr-auto flex h-[400px] w-full cursor-pointer flex-col rounded-t-lg bg-backgroundContrast p-4 shadow-backgroundContrastHover drop-shadow-lg transition-all duration-300 hover:shadow-xl hover:drop-shadow-2xl lg:h-[420px]"
     >
-      <h3 className="mb-2 font-medium text-white">{note.title}</h3>
-      <p className="max-h-[150px] overflow-hidden text-ellipsis text-gray-400 group-hover:text-gray-200">
-        {note.body}
-      </p>
-      <time className="mt-auto ml-auto text-gray-300 group-hover:text-gray-200">
-        {dayjs(note.date).format("D MMM")}
+      <h3 className="mb-2 text-xl font-bold text-white">{note.title}</h3>
+      <div
+        className="note overflow-hidden"
+        dangerouslySetInnerHTML={{
+          __html: note.body,
+        }}
+      />
+      <time className="mt-auto ml-auto pt-2 text-orange">
+        {new Date(note.date).toLocaleDateString(undefined, {
+          day: "numeric",
+          month: "short",
+        })}
       </time>
     </article>
   );

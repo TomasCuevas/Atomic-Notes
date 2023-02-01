@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
   const { toggleSidebar } = useContext(UIContext);
 
   return (
-    <header className="sticky top-0 left-0 z-40 flex h-14 items-center  bg-orange p-4 sm:h-16 lg:hidden">
+    <header className="sticky top-0 left-0 z-40 flex h-14 items-center  bg-orange p-4 sm:h-16 sm:px-6 lg:hidden">
       <NextLink href="/" className="flex items-center gap-4">
         <img
           src="/icon.svg"
@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
       </NextLink>
       <MdOutlineMenu
         onClick={toggleSidebar}
-        className="ml-auto text-4xl text-black lg:hidden"
+        className="ml-auto text-4xl text-white lg:hidden"
       />
     </header>
   );

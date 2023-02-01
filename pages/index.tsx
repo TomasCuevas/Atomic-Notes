@@ -1,17 +1,13 @@
 import { useContext } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import dayjs from "dayjs";
-import esLocale from "dayjs/locale/es";
-
-dayjs.locale(esLocale);
 
 //* components *//
-import { FullLoader, NewNoteBottom } from "../components/ui";
+import { FullLoader, NewNoteButton } from "../components/ui";
 import { Carousel } from "../components/note";
 
 //* layout *//
-import { MainLayout } from "../layout";
+import { MainLayout } from "../components/layout";
 
 //* context *//
 import { AuthContext } from "../context";
@@ -27,17 +23,20 @@ const MainPage: NextPage = () => {
         title="Inicio | Atomic Notes"
         description="Pagina de inicio de Atomic Notes"
       >
-        <section className="flex w-full max-w-[1010px] p-4">
-          <time className="ml-auto font-bold uppercase text-white">
-            {dayjs(new Date()).format("DD MMMM YYYY")}
+        <section className="flex w-full max-w-[1275px] p-4">
+          <time className="ml-auto font-bold uppercase text-orange">
+            {new Date().toLocaleDateString(undefined, {
+              day: "2-digit",
+              month: "long",
+              year: "numeric",
+            })}
           </time>
         </section>
-        <section className="w-full max-w-[1010px] p-4">
-          <h2 className="my-2 text-lg text-orange">Notas recientes</h2>
+        <section className="w-full max-w-[1275px] p-4">
           <Carousel />
         </section>
-        <section className="w-full max-w-[1010px] p-4">
-          <NewNoteBottom />
+        <section className="w-full max-w-[1275px] p-4">
+          <NewNoteButton />
         </section>
       </MainLayout>
     );
