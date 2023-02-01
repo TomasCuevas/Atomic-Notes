@@ -22,7 +22,7 @@ export const createNewNoteService = async (
   uid: string,
   title: string,
   body: string
-): Promise<INote | false> => {
+): Promise<string | false> => {
   try {
     const newNote: INote = {
       title,
@@ -41,7 +41,7 @@ export const createNewNoteService = async (
 
     newNote.id = newDoc.id;
 
-    return newNote;
+    return newNote.id;
   } catch (error) {
     console.log(error);
     return false;

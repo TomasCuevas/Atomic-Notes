@@ -121,7 +121,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setUser({
       email: result.email!,
       uid: result.uid!,
-      displayName: result.displayName,
+      displayName: result.displayName!,
       photoURL: result.photoURL ? result.photoURL : "",
     });
   };
