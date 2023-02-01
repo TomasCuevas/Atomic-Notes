@@ -9,7 +9,7 @@ interface Props {
   icon: IconType;
 }
 
-export const FormBottonProvider: React.FC<Props> = ({
+export const FormButtonProvider: React.FC<Props> = ({
   className,
   isDisabled = false,
   label,

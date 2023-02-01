@@ -17,7 +17,7 @@ import { AuthHoc, AuthTitle } from "../../components/auth";
 import { FullLoader } from "../../components/ui";
 import {
   FooterQuestion,
-  FormBottonProvider,
+  FormButtonProvider,
   FormButtonPrimary,
 } from "../../components/form";
 
@@ -95,7 +95,7 @@ const LoginPage: NextPage = () => {
               type="password"
             />
             <FormButtonPrimary label="Ingresar" type="submit" />
-            <FormBottonProvider
+            <FormButtonProvider
               label="Ingresar con Google"
               type="button"
               icon={BsGoogle}

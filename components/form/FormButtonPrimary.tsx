@@ -15,15 +15,15 @@ export const FormButtonPrimary: React.FC<Props> = ({
 }) => {
   return (
     <button
-      onClick={() => {
-        onClick ? onClick() : null;
+      onClick={(event) => {
+        onClick ? onClick(event) : null;
       }}
       type={type}
       disabled={isDisabled}
       className={
         className
           ? className
-          : "h-[50px] w-full cursor-pointer rounded-md border border-black bg-white text-xl font-semibold  text-black outline-none transition-all duration-300 hover:border-orange hover:bg-orange hover:text-white"
+          : "w-full cursor-pointer rounded-[10px]  border border-background bg-background py-2 text-lg  font-semibold text-white outline-none duration-300 hover:bg-white hover:text-background disabled:cursor-not-allowed disabled:border-background/20 disabled:bg-background/20 disabled:text-white"
       }
     >
       {label}

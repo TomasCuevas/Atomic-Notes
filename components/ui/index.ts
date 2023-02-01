@@ -1,2 +1,2 @@
 export * from "./FullLoader";
-export * from "./NewNoteBottom";
+export * from "./NewNoteButton";

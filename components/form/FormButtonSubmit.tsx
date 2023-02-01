@@ -3,7 +3,7 @@ interface Props {
   disabled?: boolean;
 }
 
-export const FormBottomSubmit: React.FC<Props> = ({
+export const FormButtonSubmit: React.FC<Props> = ({
   label,
   disabled = false,
 }) => {
