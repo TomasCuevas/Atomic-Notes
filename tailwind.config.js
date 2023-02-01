@@ -17,8 +17,8 @@ module.exports = {
         backgroundContrastHover: "#374340",
       },
       screens: {
-        xxs: "363px",
-        xs: "450px",
+        xxs: "350px",
+        xs: "400px",
         mdx: "900px",
       },
     },
