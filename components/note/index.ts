@@ -1,4 +1,5 @@
-export * from "./ImageGallery";
+export * from "./Carousel";
 export * from "./Note";
 export * from "./NoteCarousel";
-export * from "./Carousel";
+export * from "./NoteEdit";
+export * from "./NotePreview";
