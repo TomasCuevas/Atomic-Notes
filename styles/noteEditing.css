@@ -1,0 +1,53 @@
+.ql-container.ql-snow {
+  margin-top: 10px;
+  border: 0 !important;
+}
+
+.ql-editor {
+  border: 0;
+}
+
+.ql-editor h1 {
+  font-size: 2rem !important;
+  font-weight: 500 !important;
+}
+
+.ql-editor h2 {
+  font-size: 1.7rem !important;
+  font-weight: 500;
+}
+
+.ql-editor h3 {
+  font-size: 1.4rem !important;
+  font-weight: 500;
+}
+
+.ql-editor p {
+  font-size: 1.2rem !important;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.ql-editor strong {
+  font-weight: 700 !important;
+}
+
+.ql-editor ol {
+  padding-left: 20px !important;
+}
+
+.ql-editor ol li {
+  font-size: 1.2rem !important;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.ql-editor ul {
+  padding-left: 20px !important;
+}
+
+.ql-editor ul li {
+  font-size: 1.2rem !important;
+  font-weight: 400;
+  line-height: 24px;
+}

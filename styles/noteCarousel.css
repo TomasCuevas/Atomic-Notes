@@ -1,0 +1,65 @@
+.swiper-wrapper {
+  gap: 2px;
+}
+
+.note {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.note h1 {
+  display: inline;
+  font-size: 0.9rem !important;
+  font-weight: 400;
+  line-height: 24px;
+  color: #939393;
+  flex-basis: 5;
+}
+
+.note h2 {
+  display: inline;
+  font-size: 0.9rem !important;
+  font-weight: 400;
+  line-height: 24px;
+  color: #939393;
+}
+
+.note h3 {
+  display: inline;
+  font-size: 0.9rem !important;
+  font-weight: 400;
+  line-height: 24px;
+  color: #939393;
+}
+
+.note p {
+  display: inline;
+  font-size: 0.9rem !important;
+  font-weight: 400;
+  line-height: 24px;
+  color: #939393;
+}
+
+.note strong {
+  font-weight: 700 !important;
+  color: #939393;
+}
+
+.note ol li {
+  font-size: 0.9rem !important;
+  font-weight: 400;
+  line-height: 24px;
+  color: #939393;
+  display: inline;
+  margin: 0 2px;
+}
+
+.note ul li {
+  font-size: 0.9rem !important;
+  font-weight: 400;
+  line-height: 24px;
+  color: #939393;
+  list-style: decimal;
+  display: inline;
+  margin: 0 2px;
+}
