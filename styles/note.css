@@ -27,6 +27,15 @@
   font-weight: 700 !important;
 }
 
+#note span {
+  color: #000 !important;
+}
+
+#note a {
+  color: #1655bd !important;
+  text-decoration: underline;
+}
+
 #note ol li {
   margin-left: 2.5rem !important;
   font-size: 1.2rem !important;

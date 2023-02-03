@@ -45,6 +45,15 @@
   color: #939393;
 }
 
+.note span {
+  color: #939393 !important;
+}
+
+.note a {
+  color: #1655bd;
+  text-decoration: underline;
+}
+
 .note ol li {
   font-size: 0.9rem !important;
   font-weight: 400;

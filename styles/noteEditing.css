@@ -32,6 +32,15 @@
   font-weight: 700 !important;
 }
 
+.ql-editor span {
+  color: #000 !important;
+}
+
+.ql-editor a {
+  color: #1655bd !important;
+  text-decoration: underline;
+}
+
 .ql-editor ol {
   padding-left: 20px !important;
 }
