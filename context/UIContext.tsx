@@ -1,9 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, Dispatch, SetStateAction, useState } from "react";
 
 //* CONTEXT *//
 //* CONTEXT *//
 interface UIContextProps {
   isSidebarOpen: boolean;
+  listNoteSidebar: boolean;
+  toggleListNoteSidebar(): void;
   toggleSidebar(): void;
 }
 
@@ -16,8 +18,10 @@ interface UIProviderProps {
 }
 
 export const UIProvider: React.FC<UIProviderProps> = ({ children }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const [listNoteSidebar, setListNoteSidebar] = useState<boolean>(true);
 
+  //! toggle sidebar
   const toggleSidebar = () => {
     if (isSidebarOpen) {
       document.body.classList.remove("body__fix");
@@ -28,13 +32,18 @@ export const UIProvider: React.FC<UIProviderProps> = ({ children }) => {
     setIsSidebarOpen((prev) => !prev);
   };
 
+  //! toggle list note sidebar
+  const toggleListNoteSidebar = () => setListNoteSidebar((prev) => !prev);
+
   return (
     <UIContext.Provider
       value={{
         // getters
         isSidebarOpen,
+        listNoteSidebar,
 
         // methods
+        toggleListNoteSidebar,
         toggleSidebar,
       }}
     >
