@@ -11,9 +11,7 @@ export const SidebarLogout = () => {
 
   return (
     <li
-      onClick={() => {
-        startLogout();
-      }}
+      onClick={() => startLogout()}
       className="group mt-auto flex cursor-pointer items-center gap-4 rounded-full px-4 py-2 transition-all duration-300 hover:bg-white"
     >
       <div className="flex items-center justify-center rounded-full bg-white p-2 group-hover:bg-orange">

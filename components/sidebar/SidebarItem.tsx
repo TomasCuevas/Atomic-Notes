@@ -29,7 +29,7 @@ export const SidebarItem: React.FC<Props> = ({
 
   return (
     <li
-      onClick={toggleSidebar}
+      onClick={() => toggleSidebar()}
       className={
         router.pathname === path
           ? "group cursor-pointer rounded-full bg-orange "

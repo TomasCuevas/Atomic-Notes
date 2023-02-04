@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { useRouter } from "next/router";
 
 //* icons *//
 import {
@@ -14,12 +13,11 @@ import {
 import { SidebarItem, SidebarNewNote, SidebarLogout, SidebarProfile } from "./";
 
 //* context *//
-import { AuthContext } from "../../context";
+import { AuthContext, NotesContext } from "../../context";
 
 export const DesktopSidebar = () => {
   const { user } = useContext(AuthContext);
-
-  const router = useRouter();
+  const { notes } = useContext(NotesContext);
 
   return (
     <aside className="left-0 z-50 hidden min-h-screen w-[230px] flex-col border-r border-orange/60 bg-background lg:fixed lg:flex">
@@ -49,9 +47,9 @@ export const DesktopSidebar = () => {
           <SidebarItem
             icon={BsBookmarks}
             iconFill={BsBookmarksFill}
-            path="/notes/all"
+            path="/notes/[id]"
             text="Notas"
-            href="/notes/all"
+            href={`/notes/${notes[0]?.id}`}
           />
           <SidebarLogout />
         </ul>
