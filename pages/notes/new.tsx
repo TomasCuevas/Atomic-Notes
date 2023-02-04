@@ -37,7 +37,7 @@ const NewNotePage: NextPage = () => {
     setIsDisabled,
   } = useNote();
 
-  //* create note
+  //! create note
   const onCreateNewNote = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsDisabled(true);
@@ -59,29 +59,31 @@ const NewNotePage: NextPage = () => {
         title="Nueva nota | Atomic Notes"
         description="Crear nueva nota en Atomic Notes"
       >
-        <form
-          onSubmit={onCreateNewNote}
-          className="mt-10 flex w-full max-w-full flex-col gap-4 rounded-[26px] bg-white p-4 2xl:w-[1200px]"
-        >
-          <FormInputPrimary
-            inputChange={onChangeTitle}
-            inputName="title"
-            inputValue={title}
-            label="Titulo"
-            max={100}
-          />
-          <div>
-            <ReactQuill value={body} onChange={setBody} />
-          </div>
-          <div className="sm:ml-auto sm:w-[200px]">
-            <FormButtonSubmit label="Crear" disabled={isDisabled} />
-          </div>
-        </form>
-        {errorMessage ? (
-          <div className="mt-5 flex w-full items-center justify-center rounded-[26px] bg-[url('/assets/errorBackground.svg')] bg-cover bg-no-repeat px-5 py-3 2xl:max-w-[1200px]">
-            <p className="break-words font-bold text-white">{errorMessage}</p>
-          </div>
-        ) : null}
+        <section className="mx-4 flex h-full w-full justify-center">
+          <form
+            onSubmit={onCreateNewNote}
+            className="mx-auto mt-10 flex h-full w-full max-w-[1200px] flex-col gap-4 rounded-[26px] bg-white p-4"
+          >
+            <FormInputPrimary
+              inputChange={onChangeTitle}
+              inputName="title"
+              inputValue={title}
+              label="Titulo"
+              max={100}
+            />
+            <div>
+              <ReactQuill value={body} onChange={setBody} />
+            </div>
+            <div className="sm:ml-auto sm:w-[200px]">
+              <FormButtonSubmit label="Crear" disabled={isDisabled} />
+            </div>
+          </form>
+          {errorMessage ? (
+            <div className="mt-5 flex w-full items-center justify-center rounded-[26px] bg-[url('/assets/errorBackground.svg')] bg-cover bg-no-repeat px-5 py-3 2xl:max-w-[1200px]">
+              <p className="break-words font-bold text-white">{errorMessage}</p>
+            </div>
+          ) : null}
+        </section>
       </MainLayout>
     );
   }
