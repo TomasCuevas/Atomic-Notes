@@ -6,12 +6,12 @@ export const useNote = (bodyValue?: string, titleValue?: string) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isDisabled, setIsDisabled] = useState(title.length < 1);
 
-  //* change title
+  //! change title
   const onChangeTitle = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setTitle(target.value);
   };
 
-  //* set error
+  //! set error
   const onSetErrorMessage = (message: string) => {
     setErrorMessage(message);
 
@@ -21,7 +21,11 @@ export const useNote = (bodyValue?: string, titleValue?: string) => {
   };
 
   useEffect(() => {
-    if (title.length < 1) setIsDisabled(true);
+    if (title.length < 1) {
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
+    }
   }, [title]);
 
   return {
