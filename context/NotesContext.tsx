@@ -1,4 +1,11 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useRouter } from "next/router";
 
 //* services *//
@@ -19,8 +26,12 @@ import { INote } from "../interfaces/INote";
 //* CONTEXT *//
 //* CONTEXT *//
 interface NotesContextProps {
+  isEditing: boolean;
+  isSaving: boolean;
   note: INote | undefined;
   notes: INote[];
+  setIsEditing: Dispatch<SetStateAction<boolean>>;
+  setIsSaving: Dispatch<SetStateAction<boolean>>;
   startClearNote(): void;
   startCreatingNote(title: string, body: string): Promise<string | false>;
   startDeleteNote(noteId: string): Promise<boolean>;
@@ -42,6 +53,8 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
 
   const [note, setNote] = useState<INote>();
   const [notes, setNotes] = useState<INote[]>([]);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [isSaving, setIsSaving] = useState<boolean>(false);
 
   const router = useRouter();
 
@@ -49,15 +62,23 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     if (authState === "authenticated") {
       startLoadingNotes();
     }
+
+    if (authState === "not-authenticated") {
+      startClearNote();
+      startClearNotes();
+    }
   }, [authState]);
 
-  //* load notes
-  const startLoadingNotes = async () => {
+  //! load notes
+  const startLoadingNotes = async (): Promise<void> => {
     const allNotes = await getAllNotesService(user!.uid);
     if (allNotes) setNotes(allNotes);
   };
 
-  //* create note
+  //! clear all notes
+  const startClearNotes = () => setNotes([]);
+
+  //! create note
   const startCreatingNote = async (
     title: string,
     body: string
@@ -71,8 +92,8 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     }
   };
 
-  //* set note
-  const startSetNote = async (noteId: string) => {
+  //! set note
+  const startSetNote = async (noteId: string): Promise<void> => {
     const note = await getNoteService(user!.uid, noteId);
     if (note) {
       setNote(note);
@@ -81,16 +102,23 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     }
   };
 
-  //* clear note
+  //! clear note
   const startClearNote = () => setNote(undefined);
 
-  //* update note
-  const startUpdateNote = async (note: INote): Promise<boolean> => {
-    const wasUpdated = await updateNoteService(user!.uid, note);
+  //! update note
+  const startUpdateNote = async (noteToUpdate: INote): Promise<boolean> => {
+    if (
+      noteToUpdate.body === note!.body &&
+      noteToUpdate.title === note!.title
+    ) {
+      return false;
+    }
+
+    const wasUpdated = await updateNoteService(user!.uid, noteToUpdate);
 
     if (wasUpdated) {
       startLoadingNotes();
-      startSetNote(note.id!);
+      startSetNote(noteToUpdate.id!);
 
       return true;
     } else {
@@ -98,7 +126,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     }
   };
 
-  //* delete note
+  //! delete note
   const startDeleteNote = async (noteId: string) => {
     return await deleteNoteService(user!.uid, noteId);
   };
@@ -107,10 +135,14 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     <NotesContext.Provider
       value={{
         // getters
+        isEditing,
+        isSaving,
         note,
         notes,
 
         // methods
+        setIsEditing,
+        setIsSaving,
         startClearNote,
         startCreatingNote,
         startDeleteNote,
