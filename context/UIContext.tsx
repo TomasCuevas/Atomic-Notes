@@ -22,18 +22,20 @@ export const UIProvider: React.FC<UIProviderProps> = ({ children }) => {
   const [listNoteSidebar, setListNoteSidebar] = useState<boolean>(true);
 
   //! toggle sidebar
-  const toggleSidebar = () => {
+  const toggleSidebar = (value?: boolean): void => {
     if (isSidebarOpen) {
       document.body.classList.remove("body__fix");
     } else {
       document.body.classList.add("body__fix");
     }
 
-    setIsSidebarOpen((prev) => !prev);
+    setIsSidebarOpen((prev) => (value ? value : !prev));
   };
 
   //! toggle list note sidebar
-  const toggleListNoteSidebar = () => setListNoteSidebar((prev) => !prev);
+  const toggleListNoteSidebar = (value?: boolean): void => {
+    setListNoteSidebar((prev) => (value ? value : !prev));
+  };
 
   return (
     <UIContext.Provider

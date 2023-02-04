@@ -69,6 +69,10 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     }
   }, [authState]);
 
+  useEffect(() => {
+    if (router.pathname !== "/notes/[id]") setNote(undefined);
+  }, [router.pathname]);
+
   //! load notes
   const startLoadingNotes = async (): Promise<void> => {
     const allNotes = await getAllNotesService(user!.uid);
@@ -86,6 +90,8 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     const id = await createNewNoteService(user!.uid, title, body);
 
     if (id) {
+      startLoadingNotes();
+
       return id;
     } else {
       return false;
@@ -117,7 +123,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     const wasUpdated = await updateNoteService(user!.uid, noteToUpdate);
 
     if (wasUpdated) {
-      startLoadingNotes();
+      await startLoadingNotes();
       startSetNote(noteToUpdate.id!);
 
       return true;
@@ -128,7 +134,14 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
 
   //! delete note
   const startDeleteNote = async (noteId: string) => {
-    return await deleteNoteService(user!.uid, noteId);
+    const result = await deleteNoteService(user!.uid, noteId);
+
+    if (result) {
+      await startLoadingNotes();
+      return true;
+    } else {
+      return false;
+    }
   };
 
   return (
