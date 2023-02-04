@@ -2,7 +2,7 @@ import { useContext } from "react";
 import NextLink from "next/link";
 
 //* icons *//
-import { MdOutlineMenu } from "react-icons/md";
+import { RiMenu3Fill } from "react-icons/ri";
 
 //* context *//
 import { UIContext } from "../../context";
@@ -27,10 +27,9 @@ export const Header: React.FC = () => {
           es
         </h1>
       </NextLink>
-      <MdOutlineMenu
-        onClick={toggleSidebar}
-        className="ml-auto text-4xl text-white lg:hidden"
-      />
+      <button onClick={() => toggleSidebar()} className="ml-auto">
+        <RiMenu3Fill className="text-3xl text-white lg:hidden" />
+      </button>
     </header>
   );
 };
