@@ -8,7 +8,7 @@ interface Props {
 export const Note: React.FC<Props> = ({ note }) => {
   return (
     <>
-      <div className="mb-5 flex min-h-[50px] items-center overflow-hidden rounded-[10px] bg-background p-4">
+      <div className="mb-5 flex min-h-[50px] items-center overflow-hidden rounded-[10px] bg-background px-4 py-1">
         <h2 className="break-words text-xl font-black text-white">
           {note.title}
         </h2>
