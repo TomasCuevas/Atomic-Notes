@@ -23,21 +23,23 @@ const MainPage: NextPage = () => {
         title="Inicio | Atomic Notes"
         description="Pagina de inicio de Atomic Notes"
       >
-        <section className="flex w-full max-w-[1275px] p-4">
-          <time className="ml-auto font-bold uppercase text-orange">
-            {new Date().toLocaleDateString(undefined, {
-              day: "2-digit",
-              month: "long",
-              year: "numeric",
-            })}
-          </time>
-        </section>
-        <section className="w-full max-w-[1275px] p-4">
-          <Carousel />
-        </section>
-        <section className="w-full max-w-[1275px] p-4">
-          <NewNoteButton />
-        </section>
+        <div className="flex w-full flex-col items-center">
+          <section className="mx-auto flex w-full max-w-[1275px] p-4">
+            <time className="ml-auto font-bold uppercase text-orange">
+              {new Date().toLocaleDateString(undefined, {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+              })}
+            </time>
+          </section>
+          <section className="mx-auto w-full max-w-[1275px] p-4">
+            <Carousel />
+          </section>
+          <section className="mx-auto w-full max-w-[1275px] p-4">
+            <NewNoteButton />
+          </section>
+        </div>
       </MainLayout>
     );
   }
