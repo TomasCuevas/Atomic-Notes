@@ -67,7 +67,7 @@ const LoginPage: NextPage = () => {
   if (authState === "not-authenticated") {
     return (
       <AuthLayout
-        title="Registro | Atomic Notes"
+        title="Login | Atomic Notes"
         description="Pagina para registrarse en Atomic Notes"
       >
         <AuthHoc>

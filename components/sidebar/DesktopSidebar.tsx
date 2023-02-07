@@ -47,9 +47,9 @@ export const DesktopSidebar = () => {
           <SidebarItem
             icon={BsBookmarks}
             iconFill={BsBookmarksFill}
-            path="/notes/[id]"
+            path={`${notes[0]?.id ? "/notes/[id]" : "/notes/all"}`}
             text="Notas"
-            href={`/notes/${notes[0]?.id}`}
+            href={`/notes/${notes[0]?.id ? notes[0].id : "all"}`}
           />
           <SidebarLogout />
         </ul>
