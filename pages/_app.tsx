@@ -1,4 +1,5 @@
 import { AppProps } from "next/app";
+import Head from "next/head";
 
 //* providers *//
 import { AuthProvider, NotesProvider, UIProvider } from "../context";
@@ -14,6 +15,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <AuthProvider>
       <NotesProvider>
         <UIProvider>
+          <Head>
+            <link rel="icon" type="image/x-icon" href="/icon.svg" />
+          </Head>
           <Component {...pageProps} />
         </UIProvider>
       </NotesProvider>
